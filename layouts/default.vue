@@ -32,7 +32,7 @@
                   <v-icon @click="drawer = false">mdi-close</v-icon>
 
                     <v-row no-gutters align="center" justify="end"> 
-                        <p class="jello-user">Signed in as<br>
+                        <p class="jello-user topbar-items">Вошел в систему как<br>
                         {{ $nuxt.$fire.auth.currentUser.email }}</p>
                         &nbsp;
                         <v-icon>mdi-account-circle-outline</v-icon>
@@ -48,12 +48,12 @@
                   </div>
                   <div class="d-flex">
                     <nuxt-link to="/">
-                      <v-icon>mdi-view-dashboard-variant-outline</v-icon>&nbsp;&nbsp;<b>My Boards</b>
+                      <v-icon>mdi-view-dashboard-variant-outline</v-icon>&nbsp;&nbsp;<b>Мои доски</b>
                     </nuxt-link>
                   </div>
                   <div class="d-flex">
                     <nuxt-link to="/auth/signout">
-                      <v-icon>mdi-exit-to-app</v-icon>&nbsp;&nbsp;<b>Sign out</b>
+                      <v-icon>mdi-exit-to-app</v-icon>&nbsp;&nbsp;<b>Выйти</b>
                     </nuxt-link>
                   </div>
                 </div>
@@ -79,6 +79,10 @@ export default {
 <style lang="scss" scoped>
 a {
   text-decoration: none;
+}
+.topbar-items {
+  color: $text-color;
+  font-size: 11px;
 }
 .menu-items a {
   color: $text-color;

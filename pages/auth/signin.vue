@@ -5,7 +5,7 @@
          <v-card-title class="fancy-title align-center justify-center">Trello</v-card-title><v-card-text>
          <v-form>
             <v-text-field
-               label="Login"
+               label="Логин"
                name="login"
                prepend-icon="mdi-account"
                type="text"
@@ -13,7 +13,7 @@
             ></v-text-field>
 
             <v-text-field
-               label="Password"
+               label="Пароль"
                name="password"
                prepend-icon="mdi-lock"
                type="password"
@@ -27,7 +27,9 @@
             @click="login"
             depressed
             large
-            >Login</v-btn
+            block
+            elevation="4"
+            >Войти</v-btn
          >
       </v-card-actions>
       </v-card>

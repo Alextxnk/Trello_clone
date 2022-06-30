@@ -4,14 +4,14 @@
       <v-container class="d-block">
         <v-row no-gutters align="center" justify="space-between">
           <v-row no-gutters>
-            <h3>Add Board</h3>
+            <h3>Добавить доску</h3>
           </v-row>
           <v-icon @click="dialog = false">mdi-close</v-icon>
         </v-row>
         <v-form ref="form" v-model="valid">
           <div class="d-flex flex-column">
             <v-text-field
-              label="Board title"
+              label="Заголовок доски"
               name="title"
               type="text"
               :rules="[(v) => !!v || 'Board title is required']"
@@ -19,7 +19,7 @@
               v-model="board.title"
             ></v-text-field>
             <v-btn v-if="enableColor === false" depressed @click="enableColor = true">
-              Choose board color
+              Выберите цвет доски 
             </v-btn>
             <br>
             <v-color-picker
@@ -40,7 +40,7 @@
                 v-if="!fileToUpload.progress || fileToUpload.progress == 0"
               >
                 <v-icon>mdi-camera</v-icon>
-                <p>Add a board background</p>
+                <p>Добавьте фон доски</p>
                 <input
                   type="file"
                   accept="jpg, jpeg, png"
@@ -68,18 +68,18 @@
               </template>
             </div>
             <v-btn :disabled="!valid" color="primary" @click="createBoard"
-              >Submit</v-btn
+              >Отправить</v-btn
             >
           </div>
         </v-form>
       </v-container>
     </v-dialog>
     <div class="d-flex flex-row align-center justify-space-between">
-      <h1>My Boards</h1>
-      <v-btn small depressed @click="addBoard">ADD BOARD</v-btn>
+      <h1>Мои доски</h1>
+      <v-btn small depressed @click="addBoard">ДОБАВИТЬ ДОСКУ</v-btn>
     </div>
     <div class="d-flex flex-wrap align-center justify-start">
-      <p v-if="boards.length === 0">You have no boards yet</p>
+      <p v-if="boards.length === 0">У вас еще нет досок</p>
       
       <v-card
         :style="board.image.downloadURL != '' ? `background:url('${board.image.downloadURL}');`: board.color ? `background-color:${board.color}` : ''"
@@ -92,7 +92,7 @@
           {{ board.title }}
         </v-card-title>
         <v-card-subtitle :style="board.image.downloadURL != '' ? 'color:#fff':''">
-          created {{ board.dateCreated | formatDate }}
+          создана {{ board.dateCreated | formatDate }}
         </v-card-subtitle>
       </v-card>
     </div>
@@ -193,7 +193,7 @@ export default {
           .then(function (docRef) {
             that.dialog = false
             that.$refs.form.reset()
-            that.snackbarText = 'Successfully created your board'
+            that.snackbarText = 'Ваша доска создана успешно'
             that.snackbar = true
           })
           .catch(function (error) {})

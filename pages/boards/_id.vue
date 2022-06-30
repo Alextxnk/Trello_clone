@@ -35,8 +35,8 @@
             <v-icon @click="drawer = false">mdi-close</v-icon>
 
             <v-row no-gutters align="center" justify="end">
-               <p class="jello-user">
-                  Signed in as<br />
+               <p class="jello-user topbar-items">
+                  Вошел в систему как<br />
                   {{ $nuxt.$fire.auth.currentUser.email }}
                </p>
                &nbsp;
@@ -52,12 +52,12 @@
             <div class="d-flex">
                <nuxt-link to="/">
                   <v-icon>mdi-view-dashboard-variant-outline</v-icon
-                  >&nbsp;&nbsp;<b>My Boards</b>
+                  >&nbsp;&nbsp;<b>Мои доски</b>
                </nuxt-link>
             </div>
             <div class="d-flex">
                <nuxt-link to="/auth/signout">
-                  <v-icon>mdi-exit-to-app</v-icon>&nbsp;&nbsp;<b>Sign out</b>
+                  <v-icon>mdi-exit-to-app</v-icon>&nbsp;&nbsp;<b>Выйти</b>
                </nuxt-link>
             </div>
             </div>
@@ -66,7 +66,7 @@
       </div>
 
       <h1 :style="board.image.downloadURL != '' ? 'color:#fff':''">{{ board.title }}</h1>
-      <small :style="board.image.downloadURL != '' ? 'color:#fff':''">created {{ board.dateCreated | formatDate }}</small>
+      <small :style="board.image.downloadURL != '' ? 'color:#fff':''">создана {{ board.dateCreated | formatDate }}</small>
       <div class="d-flex flex-row pr-6 pt-3">
          <div
          v-for="list in board.lists"
@@ -101,20 +101,20 @@
             listId = list.id
             "
             class="mt-auto"
-            >Add card</v-btn
+            >Добавить стикер</v-btn
          >
       </div>
          <v-dialog v-model="dialogCard" persistent max-width="600px">
          <v-card elevation="0">
             <v-card-title>
-            <span class="headline">Card name</span>
+            <span class="headline">Название стикера </span>
             </v-card-title>
             <v-card-text>
             <v-container>
                <v-row>
                   <v-col cols="12">
                   <v-text-field
-                     label="Stuff to do"
+                     label="Что нужно сделать"
                      v-model="card.title"
                      required
                   ></v-text-field>
@@ -125,29 +125,29 @@
             <v-card-actions>
             <v-spacer></v-spacer>
             <v-btn color="blue darken-1" text @click="dialogCard = false">
-               Close
+               Закрыть
             </v-btn>
             <v-btn color="blue darken-1" text @click="createCard()">
-               Save
+               Сохранить
             </v-btn>
             </v-card-actions>
          </v-card>
       </v-dialog>
       <div class="d-flex flex-row">
          <v-btn depressed @click="dialog = true" class="create-list"
-            >Create new list</v-btn
+            >Создать новую карточку</v-btn
          >
          <v-dialog v-model="dialog" persistent max-width="600px">
             <v-card elevation="0">
             <v-card-title>
-               <span class="headline">List name</span>
+               <span class="headline">Название карточки</span>
             </v-card-title>
             <v-card-text>
                <v-container>
                   <v-row>
                   <v-col cols="12">
                      <v-text-field
-                        label="Stuff to do"
+                        label="Что нужно сделать"
                         v-model="list.title"
                         required
                      ></v-text-field>
@@ -158,10 +158,10 @@
             <v-card-actions>
                <v-spacer></v-spacer>
                <v-btn color="blue darken-1" text @click="dialog = false">
-                  Close
+                  Закрыть
                </v-btn>
                <v-btn color="blue darken-1" text @click="createList()">
-                  Save
+                  Сохранить
                </v-btn>
             </v-card-actions>
             </v-card>
@@ -177,7 +177,7 @@
                <v-row>
                   <v-col cols="12">
                   <v-text-field
-                     label="Edit title"
+                     label="Редактировать заголовок"
                      v-model="currentCard.title"
                      required
                   ></v-text-field>
@@ -188,13 +188,13 @@
             <v-card-actions>
             <v-spacer></v-spacer>
             <v-btn color="red darken-1" text @click="deleteCard()">
-               Delete
+               Удалить
             </v-btn>
             <v-btn color="blue darken-1" text @click="dialogEditCard = false">
-               Close
+               Закрыть 
             </v-btn>
             <v-btn color="blue darken-1" text @click="updateCard()">
-               Save
+               Сохранить 
             </v-btn>
             </v-card-actions>
          </v-card>
@@ -470,6 +470,10 @@ export default {
    } */
    a {
       text-decoration: none;
+   }
+   .topbar-items {
+      color: $text-color;
+      font-size: 11px;
    }
    .menu-items a {
       color: $text-color;
